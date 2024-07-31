@@ -102,7 +102,7 @@
 
 actualizar(1, "niños", 16);
 actualizar(1, "equipos", 9);
-actualizar(1, "niñas", 20);
+actualizar(1, "niñas", 18);
 actualizar(1, "personalizadas", 39);
 actualizar(1, "PyT", 6);
 
@@ -110,8 +110,8 @@ actualizar(1, "PyT", 6);
 
 function actualizar(index, categoria, end) {
 
-    let row = document.getElementById("row-" + `${categoria}`);
-    row.classList.add("animate__animated");
+    const row = document.getElementById("row-" + `${categoria}`);
+    row.classList.add("overflow-hidden");
     limpiar(row);
 
 
@@ -121,10 +121,14 @@ function actualizar(index, categoria, end) {
     flecha.src = "images/flecha.png";
     flecha.style.transform = "rotate(180deg)";
     menos.appendChild(flecha)
-    
+
     menos.onclick = () => {
         actualizar(index - 9, categoria, end);
-        row.classList.add("animate__backInLeft");
+        for (const elem of row.childNodes) {
+            if (elem.classList.contains("card")) {
+                elem.classList.add("animate__backInLeft");
+            }
+        };
     }
     row.appendChild(menos);
 
@@ -133,16 +137,16 @@ function actualizar(index, categoria, end) {
 
     for (index; index <= lim; index++) {
         if (index > end) {
-            
+
             lim = 6 - row.childNodes.length;
             index = 1
-        }else if (index < 1) {
-            index = end+index;
+        } else if (index < 1) {
+            index = end + index;
             lim = index + 4
         }
 
         var card = document.createElement("card");
-        card.setAttribute("class", `col-sm-4 col-md-2 card`);
+        card.setAttribute("class", `col-sm-4 col-md-2 card animate__animated`);
         var img = new Image();
         img.src = `images/Reposteria/${categoria}/a (${index}).jpg`;
         img.setAttribute("class", "card-img-top")
@@ -155,10 +159,14 @@ function actualizar(index, categoria, end) {
     var flecha = new Image(25, 25);
     flecha.src = "images/flecha.png";
     mas.appendChild(flecha)
-
     mas.onclick = () => {
         actualizar(lim, categoria, end);
-        row.classList.add("animate__backInRight");
+        for (const elem of row.childNodes) {
+            if (elem.classList.contains("card")) {
+                console.log(elem);
+                elem.classList.add("animate__backInRight");
+            }
+        };
     }
     row.appendChild(mas);
 }
@@ -167,7 +175,6 @@ function actualizar(index, categoria, end) {
 
 function limpiar(row) {
     while (row.firstChild) {
-        row.classList.remove("animate__backInRight","animate__backInLeft")
         row.removeChild(row.lastChild);
     }
 
