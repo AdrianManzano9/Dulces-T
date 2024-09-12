@@ -236,7 +236,11 @@ p {
   -o-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s; }
   .sticky .navbar {
-    padding: 15px 0; }
+    padding: 15px 15px; }
+    .sticky .navbar-brand img{
+      width: 50px;
+      margin-top: -5px;
+    }
 
 .navbar {
   padding: 20px 0;
@@ -251,10 +255,13 @@ p {
 .navbar-brand {
   padding: 0; }
   .navbar-brand img {
-    width: 150px; }
+    width: 85px; 
+    background-color: #ffffff7a;
+    border-radius: 10%;
+  }
     @media (max-width: 767px) {
       .navbar-brand img {
-        width: 130px; } }
+        width: 65px; } }
 
 .navbar-toggler {
   padding: 0; }
@@ -586,6 +593,24 @@ p {
   height: 40vh;
   background-color: rgba(128, 128, 128, 0.555);
   margin: 8px;
+}
+
+.card img{
+  max-height: 39vh;
+}
+
+.carousel-trabajos{
+  width:100%;
+  position: static;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 2vh;
+  margin-bottom: 5vh;
+
+}
+
+.carousel-trabajos button{
+  border: none;
 }
 /*===========================
         07.TEAM css

@@ -111,7 +111,6 @@ actualizar(1, "PyT", 6);
 function actualizar(index, categoria, end) {
 
     const row = document.getElementById("row-" + `${categoria}`);
-    row.classList.add("overflow-hidden");
     limpiar(row);
 
 
@@ -121,6 +120,8 @@ function actualizar(index, categoria, end) {
     flecha.src = "images/flecha.png";
     flecha.style.transform = "rotate(180deg)";
     menos.appendChild(flecha)
+
+    
 
     menos.onclick = () => {
         actualizar(index - 9, categoria, end);
@@ -146,7 +147,7 @@ function actualizar(index, categoria, end) {
         }
 
         var card = document.createElement("card");
-        card.setAttribute("class", `col-sm-4 col-md-2 card animate__animated`);
+        card.setAttribute("class", `col-xs-2 col-sm-2 card animate__animated`);
         var img = new Image();
         img.src = `images/Reposteria/${categoria}/a (${index}).jpg`;
         img.setAttribute("class", "card-img-top")
